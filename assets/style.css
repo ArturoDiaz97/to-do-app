@@ -1,7 +1,54 @@
+@font-face {
+    src: url(fonts/JosefinSans-VariableFont_wght.ttf);
+    font-family: josefin-sans;
+}
+:root{
+    /* MAX-WIDTH-BY-SCREEN-SIZES */
+    --max-width-container-mobile: 375px;
+    --max-width-container-dektop: 1440px;
+    /* FONTS WEIGHTS */
+    --font-weight-400: 400;
+    --font-weight-700: 700;
+    /* PRIMARIES COLORS */
+    --title-color: #FFFFFF;
+    --bright-blue: hsl(220, 98%, 61%);
+    --check-background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    /* LIGHT THEME VARIABLES */
+    --very-light-gray: hsl(0, 0%, 98%);
+    --very-light-grayish-blue: hsl(236, 33%, 92%);
+    --light-grayish-blue: hsl(233, 11%, 84%);
+    --dark-grayish-blue: hsl(236, 9%, 61%);
+    --very-dark-grayish-blue: hsl(235, 19%, 35%);
+    /* DARK THEME VARIABLES */
+    --very-dark-blue: hsl(235, 21%, 11%);
+    --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+    --light-grayish-blue: hsl(234, 39%, 85%);
+    --light-grayish-blue-hover: hsl(236, 33%, 92%);
+    --dark-grayish-blue: hsl(234, 11%, 52%);
+    --very-dark-grayish-blue: hsl(233, 14%, 35%);
+    --very-dark-grayish-blue-aux: hsl(237, 14%, 26%);
+}
 *, *::after, *::before{
     padding: 0;
     margin: 0;
 }
+html{
+    font-size: 18px;
+    font-family: josefin-sans;
+}
+
+/* GENERICS CLASSES */
+.center-background-image{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.none{
+    display: none;
+}
+
+/* SITE CLASSES */
+
 main{
     height: 100vh;
     display: grid;
@@ -14,11 +61,30 @@ main{
 
 section:nth-child(1){
     background-image: url('./img/bg-desktop-light.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     grid-area: first-rectangle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+    .container{
+        height: 60%;
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .title-theme-container{
+            color: var(--title-color);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    
+    .input-container{
+        
+    }
 
 section:nth-child(2){
     background-color: rgb(238, 238, 238);
