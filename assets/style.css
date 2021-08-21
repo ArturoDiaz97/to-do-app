@@ -69,11 +69,11 @@ section:nth-child(1){
     .container{
         height: 60%;
         width: 85%;
+        max-width: 400px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
-
         .title-theme-container{
             color: var(--title-color);
             display: flex;
@@ -82,9 +82,100 @@ section:nth-child(1){
             justify-content: space-between;
         }
     
-    .input-container{
-        
+    .input-checkbox-container{
+        background-color: var(--title-color);
+        border-radius: .3rem;
+        height: 40%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 15% 85%;   
     }
+        .checkbox-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+            .checkbox-circle{
+                display: block;
+                position: relative;
+                height: 19px;
+                width: 19px;
+                cursor: pointer;
+                
+            }
+            .checkbox-circle input{
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+            .checkbox-text{
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 19px;
+                width: 19px;
+                border-radius: 15px;
+                background-color: #eee;
+            }
+            .checkbox-circle-center{
+                position: absolute;
+                top: 2.2px;
+                left: 1.7px;
+                height: 15px;
+                width: 15px;
+                border-radius: 15px;
+                background-color: white;
+            }
+            /* On mouse-over, add a grey background color */
+            .checkbox-circle:hover input ~ .checkbox-text {
+                background-color: rgb(230, 230, 230);
+            }
+            /* When the checkbox is checked, add a background */
+            .checkbox-circle input:checked ~ .checkbox-text {
+                background: var(--check-background);
+            }
+            .checkbox-circle input:checked ~ .checkbox-circle-center {
+                height: 0;
+                width: 0;
+                opacity: 0;
+            }
+            /* Create the checkmark/indicator (hidden when not checked) */
+            .checkbox-text:after {
+                content: "";
+                position: absolute;
+                display: none;
+                
+            }
+            /* Show the checkmark when checked */
+            .checkbox-circle input:checked ~ .checkbox-text:after {
+                display: block;
+            }
+            /* Style the checkmark/indicator */
+            .checkbox-circle .checkbox-text:after {
+                left: 7.5px;
+                top: 4px;
+                width: 2px;
+                height: 7px;
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+        .input-container{
+            width: auto;
+            height: auto;
+        }
+            .input-text{
+                font-family: josefin-sans;
+                width: 100%;
+                height: 100%;
+                outline: 0;
+                border: none;
+                border-radius: .3rem;
+            }
 
 section:nth-child(2){
     background-color: rgb(238, 238, 238);
