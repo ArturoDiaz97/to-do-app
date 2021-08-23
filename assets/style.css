@@ -209,17 +209,37 @@ section:nth-child(2){
         display: flex;
         flex-direction: column;
     }
+        .all-lists-container{
+            height: calc(calc(var(--max-height-todoitem) * 6) + 6px);
+            border-top-left-radius: var(--border-radius-containers);
+            border-top-right-radius: var(--border-radius-containers);
+            position: relative;
+            background-color: var(--title-color);
+        }
         .list-container{
-            height: 80%;
-            max-height: calc(calc(var(--max-height-todoitem) * 6) + 6px);
-            border-radius: var(--border-radius-containers);
+            /* height: 80%; */
+            /* max-height: calc(calc(var(--max-height-todoitem) * 6) + 6px); */
+            height: 100%;
+            width: 100%;
+            border-top-left-radius: var(--border-radius-containers);
+            border-top-right-radius: var(--border-radius-containers);
             overflow-y: auto;
+            position: absolute;
+            top: 0;
+            opacity: 0;
+        }
+        .list-container.activo{
+            z-index: 1;
+            transition: all .5s ease;
+            opacity: 1;
         }
             .input-checkbox-container.item{
                 border-radius: 0;
                 border-bottom: 1px solid var(--very-light-grayish-blue);
             }
         .description-container{
+            border-bottom-left-radius: var(--border-radius-containers);
+            border-bottom-right-radius: var(--border-radius-containers);
             background-color: var(--title-color);
             color: var(--light-grayish-blue);
             height: 10%;
@@ -239,6 +259,7 @@ section:nth-child(2){
                 font-family: josefin-sans;
             }
         .tabs-container{
+            border-radius: var(--border-radius-containers);
             background-color: var(--title-color);
             margin-top: 1rem;
             height: 10%;
@@ -255,6 +276,10 @@ section:nth-child(2){
             .tabs-container ul li{
                 cursor: pointer;
                 padding: 0 1rem;
+            }
+            .tab.activo{
+                color: var(--bright-blue);
+                font-weight: var(--font-weight-700);
             }
     footer{
         align-self: flex-end;
