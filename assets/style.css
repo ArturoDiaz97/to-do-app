@@ -65,11 +65,33 @@ main{
 }
 
 section:nth-child(1){
+    transition: all .5s ease-in-out;
     background-image: url('./img/bg-desktop-light.jpg');
     grid-area: first-rectangle;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+section:nth-child(1).dark{
+    transition: all .5s ease-in-out;
+    background-image: url('./img/bg-desktop-dark.jpg');
+}
+section:nth-child(1).dark .input-checkbox-container{
+    transition: all .5s ease-in-out;
+    background-color: var(--very-dark-grayish-blue-aux);
+}
+section:nth-child(1).dark .checkbox-circle-center{
+    transition: all .5s ease-in-out;
+    background-color: var(--very-dark-grayish-blue-aux);
+}
+section:nth-child(1).dark .input-container{
+    transition: all .5s ease-in-out;
+    background-color: var(--very-dark-grayish-blue-aux);
+}
+section:nth-child(1).dark .input-text{
+    transition: all .5s ease-in-out;
+    background-color: var(--very-dark-grayish-blue-aux);
+    color: var(--title-color);
 }
     .container{
         height: 60%;
@@ -88,6 +110,7 @@ section:nth-child(1){
         }
     
     .input-checkbox-container{
+        transition: all .5s ease-in-out;
         color: var(--very-dark-grayish-blue);
         background-color: var(--title-color);
         border-radius: var(--border-radius-containers);
@@ -98,6 +121,7 @@ section:nth-child(1){
         grid-template-columns: 15% 85%;   
     }
         .checkbox-container{
+            transition: all .5s ease-in-out;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -127,6 +151,7 @@ section:nth-child(1){
                 background-color: #eee;
             }
             .checkbox-circle-center{
+                transition: all .5s ease-in-out;
                 position: absolute;
                 top: 2.2px;
                 left: 1.7px;
@@ -172,10 +197,12 @@ section:nth-child(1){
                 transform: rotate(45deg);
             }
         .input-container{
+            transition: all .5s ease-in-out;
             width: auto;
             height: auto;
         }
             .input-text{
+                transition: all .5s ease-in-out;
                 font-family: josefin-sans;
                 width: 100%;
                 height: 100%;
@@ -193,12 +220,48 @@ section:nth-child(1){
             }
         
 section:nth-child(2){
+    transition: all .5s ease-in-out;
     background-color: rgb(238, 238, 238);
     grid-area: second-rectangle;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+section:nth-child(2).dark{
+    transition: all .5s ease-in-out;
+    background-color: var(--very-dark-blue);
+}
+section:nth-child(2).dark .all-lists-container{
+    transition: all .5s ease-in-out;
+    background-color: var(--very-dark-grayish-blue-aux);
+}
+section:nth-child(2).dark .checkbox-container{
+    transition: all .5s ease-in-out;
+    background-color: var(--very-dark-grayish-blue-aux);
+}
+section:nth-child(2).dark .checkbox-circle-center{
+    transition: all .5s ease-in-out;
+    background-color: var(--very-dark-grayish-blue-aux);
+}
+section:nth-child(2).dark .input-container{
+    transition: all .5s ease-in-out;
+    color: var(--title-color);
+    background-color: var(--very-dark-grayish-blue-aux);
+}
+section:nth-child(2).dark .description-container{
+    transition: all .5s ease-in-out;
+    background-color: var(--very-dark-grayish-blue-aux);
+    color: var(--light-grayish-blue);
+}
+section:nth-child(2).dark .tabs-container{
+    transition: all .5s ease-in-out;
+    background-color: var(--very-dark-grayish-blue-aux);
+    color: var(--light-grayish-blue);
+}
+section:nth-child(2).dark footer{
+    transition: all .5s ease-in-out;
+    color: var(--light-grayish-blue);
 }
     .list-tabs-description-container{
         position: absolute;
@@ -210,6 +273,7 @@ section:nth-child(2){
         flex-direction: column;
     }
         .all-lists-container{
+            transition: all .5s ease-in-out;
             height: calc(calc(var(--max-height-todoitem) * 6) + 6px);
             border-top-left-radius: var(--border-radius-containers);
             border-top-right-radius: var(--border-radius-containers);
@@ -217,6 +281,7 @@ section:nth-child(2){
             background-color: var(--title-color);
         }
         .list-container{
+            transition: all .5s ease-in-out;
             height: 100%;
             width: 100%;
             border-top-left-radius: var(--border-radius-containers);
@@ -236,6 +301,7 @@ section:nth-child(2){
                 border-bottom: 1px solid var(--very-light-grayish-blue);
             }
         .description-container{
+            transition: all .5s ease-in-out;
             border-bottom-left-radius: var(--border-radius-containers);
             border-bottom-right-radius: var(--border-radius-containers);
             background-color: var(--title-color);
@@ -257,6 +323,7 @@ section:nth-child(2){
                 font-family: josefin-sans;
             }
         .tabs-container{
+            transition: all .5s ease-in-out;
             border-radius: var(--border-radius-containers);
             background-color: var(--title-color);
             margin-top: 1rem;
@@ -283,6 +350,8 @@ section:nth-child(2){
                 font-weight: var(--font-weight-700);
             }
     footer{
+        transition: all .5s ease-in-out;
+        font-weight: var(--font-weight-400);
         align-self: flex-end;
         margin-bottom: 4rem;
     }
@@ -299,15 +368,16 @@ section:nth-child(2){
             }
             .tabs-container{
                 z-index: 1;
-                position: absolute;
                 font-size: var(--mobile-font-size);
+                top: calc(calc(var(--max-height-todoitem) * 6) + 6px);
+                padding-right: 1rem;
+                position: absolute;
                 height: fit-content;
                 width: fit-content;
                 align-self: center;
-                top: calc(calc(var(--max-height-todoitem) * 6) + 6px);
-                padding-right: 1rem;
             }
             footer{
+                font-size: var(--mobile-font-size);
                 margin-bottom: 6rem;
             }
     }
