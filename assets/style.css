@@ -151,7 +151,7 @@ section:nth-child(1).dark .input-text{
                 background-color: #eee;
             }
             .checkbox-circle-center{
-                transition: all .5s ease-in-out;
+                transition: all .5s ease-out;
                 position: absolute;
                 top: 2.2px;
                 left: 1.7px;
@@ -233,6 +233,10 @@ section:nth-child(2).dark{
     background-color: var(--very-dark-blue);
 }
 section:nth-child(2).dark .all-lists-container{
+    transition: all .5s ease-in-out;
+    background-color: var(--very-dark-grayish-blue-aux);
+}
+section:nth-child(2).dark .input-checkbox-container{
     transition: all .5s ease-in-out;
     background-color: var(--very-dark-grayish-blue-aux);
 }
