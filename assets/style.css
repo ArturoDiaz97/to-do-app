@@ -270,15 +270,16 @@ section:nth-child(2).dark footer{
     .list-tabs-description-container{
         position: absolute;
         top: -25px;
-        width: 85%;
-        height: 85%;
+        width: 85vw;
+        height: 70vh;
         max-width: var(--max-width-container);
         display: flex;
         flex-direction: column;
     }
         .all-lists-container{
             transition: all .5s ease-in-out;
-            height: calc(calc(var(--max-height-todoitem) * 6) + 6px);
+            height: 38.3vh;
+            /* height: calc(calc(var(--max-height-todoitem) * 6) + 6px); */
             border-top-left-radius: var(--border-radius-containers);
             border-top-right-radius: var(--border-radius-containers);
             position: relative;
@@ -373,7 +374,8 @@ section:nth-child(2).dark footer{
             .tabs-container{
                 z-index: 1;
                 font-size: var(--mobile-font-size);
-                top: calc(calc(var(--max-height-todoitem) * 6) + 6px);
+                top: 38.8vh;
+                /* top: calc(calc(var(--max-height-todoitem) * 6) + 6px); */
                 padding-right: 1rem;
                 position: absolute;
                 height: fit-content;
