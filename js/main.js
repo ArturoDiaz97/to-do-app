@@ -1,5 +1,6 @@
 import { agregarFuncionalidadTabs } from "./tabs.js";
 import { activateDarkTheme } from "./dark-theme.js";
+import { addItem } from "./add-todo.js";
 
 ((d)=>{
     const tabs = d.querySelectorAll(".tab");
@@ -12,9 +13,8 @@ import { activateDarkTheme } from "./dark-theme.js";
     activateDarkTheme(iconMoon, iconSun, sections)
 
     const inputTODO = d.querySelector(".input-container input")
-    inputTODO.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            console.log(e.target.value);
-        }
-    })
+    const listaActivos = d.querySelector(".list-container.active")
+    const listaAll = d.querySelector(".list-container.all")
+    //const listaCompleted = d.querySelector(".list-container.completed")
+    addItem(d, inputTODO, listaActivos, listaAll);
 })(document);
