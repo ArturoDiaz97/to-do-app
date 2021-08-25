@@ -13,7 +13,9 @@ export function addItem(d, inputTODO, listaActivos, listaAll){
             $checkBoxCircle.classList.add("checkbox-circle");
 
             let $input = d.createElement("input");
+            $input.classList.add("checkbox-item");
             $input.type = "checkbox";
+
             let $checkboxText = d.createElement("span");
             $checkboxText.classList.add("checkbox-text");
             let $checkboxCircleCenter = d.createElement("div");
@@ -50,6 +52,7 @@ export function addItem(d, inputTODO, listaActivos, listaAll){
 
             itemFragment.appendChild($inputCheckboxContainer);
             let itemFramentClone = itemFragment.cloneNode(true);
+
 
             listaActivos.appendChild(itemFragment);
             listaAll.appendChild(itemFramentClone);
