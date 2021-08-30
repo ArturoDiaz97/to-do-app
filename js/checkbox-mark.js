@@ -22,9 +22,10 @@ function setTodoCompleted(items, itemID, listaCompleted, listaActivos){
             }else{
                 item.estado = 1;
             }
-            removeItemsAndGenerateItemsSorted(listaCompleted, items, 3);
             removeItemsAndGenerateItemsSorted(listaActivos, items, 2);
+            removeItemsAndGenerateItemsSorted(listaCompleted, items, 3);
         }
     })
-    
+    console.log(items);
+    localStorage.setItem("allItemsTODO", JSON.stringify(items));
 }
