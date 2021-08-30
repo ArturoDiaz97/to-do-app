@@ -1,10 +1,10 @@
 import { removeItemsAndGenerateItemsSorted } from "./remove-template-todo.js";
 
-export function setListenersToItemsCheckboxes(d, allTodoItems, listaCompleted, listaActivos){
+export function setListenersToItemsCheckboxes(d, listaAll, listaCompleted, listaActivos){
     d.addEventListener("click", (e) => {
         if (e.target.className == "checkbox-item") {
             let textItemContainer = e.target.parentNode.parentNode.parentNode.lastChild.firstChild.firstChild;
-            setTodoCompleted(allTodoItems, textItemContainer.id, listaCompleted ,listaActivos)
+            setTodoCompleted(textItemContainer.id, listaAll, listaCompleted ,listaActivos)
             if (e.target.checked) {
                 textItemContainer.style.textDecorationLine = "line-through";
             }else{
@@ -14,7 +14,8 @@ export function setListenersToItemsCheckboxes(d, allTodoItems, listaCompleted, l
     })
 }
 
-function setTodoCompleted(items, itemID, listaCompleted, listaActivos){
+function setTodoCompleted(itemID, listaAll, listaCompleted, listaActivos){
+    let items = JSON.parse(localStorage.getItem("allItemsTODO"));
     items.find(item => {
         if (item.id == itemID) {
             if(item.estado == 1){
@@ -22,10 +23,10 @@ function setTodoCompleted(items, itemID, listaCompleted, listaActivos){
             }else{
                 item.estado = 1;
             }
+            removeItemsAndGenerateItemsSorted(listaAll, items, 1);
             removeItemsAndGenerateItemsSorted(listaActivos, items, 2);
             removeItemsAndGenerateItemsSorted(listaCompleted, items, 3);
         }
     })
-    console.log(items);
     localStorage.setItem("allItemsTODO", JSON.stringify(items));
 }
