@@ -1,4 +1,6 @@
-export function createTemplateTODO(d, listaActivos, listaAll, itemFragment, target){
+export function createTemplateTODO(d, container, itemValor, itemID, estado){
+    let itemFragment = new DocumentFragment();
+
     let $inputCheckboxContainer = d.createElement("div");
     $inputCheckboxContainer.classList.add("input-checkbox-container");
     $inputCheckboxContainer.classList.add("item")
@@ -32,7 +34,16 @@ export function createTemplateTODO(d, listaActivos, listaAll, itemFragment, targ
     
     let $itemText = d.createElement("div");
     $itemText.classList.add("item-text");
-    $itemText.textContent = target.value;
+    $itemText.id = itemID;
+    $itemText.textContent = itemValor;
+
+    if (estado == 1) {
+        $input.checked = false;
+        $itemText.style.textDecorationLine = "none";
+    } else if(estado == 2){
+        $input.checked = true;
+        $itemText.style.textDecorationLine = "line-through"
+    }
     
     let $icon = d.createElement("img");
     $icon.classList.add("icon");
@@ -48,11 +59,14 @@ export function createTemplateTODO(d, listaActivos, listaAll, itemFragment, targ
     $inputCheckboxContainer.appendChild($inputContainer);
     
     itemFragment.appendChild($inputCheckboxContainer);
-    let itemFramentClone = itemFragment.cloneNode(true);
     
-    
-    listaActivos.appendChild(itemFragment);
-    listaAll.appendChild(itemFramentClone);
-    
-    target.value = "";
+    container.appendChild(itemFragment);
+
+    let textoAgregado = itemValor;
+
+    return {
+        id: itemID,
+        valor: textoAgregado,
+        estado: estado
+    };
 }
