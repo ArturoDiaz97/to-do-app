@@ -38,6 +38,19 @@ import Utils from "../utils/utils.js";
         activateDarkTheme(iconMoon, iconSun, sections);
     })
 
+    d.addEventListener("click", (e) => {
+        if (e.target.className == "icon") {
+            allTodoItems = JSON.parse(localStorage.getItem("allItemsTODO"));
+            let itemID = e.target.parentNode.firstChild.id;
+            let allTodoAux = allTodoItems.filter(item => item.id != itemID);
+            updateTotalLeftItems(totalItemsActive, allTodoAux, descriptionContainer);
+            removeItemsAndGenerateItemsSorted(listaAll, allTodoAux, 1);
+            removeItemsAndGenerateItemsSorted(listaActivos, allTodoAux, 2);
+            removeItemsAndGenerateItemsSorted(listaCompleted, allTodoAux, 3);
+            localStorage.setItem("allItemsTODO", JSON.stringify(allTodoAux));
+        }
+    })
+
     inputTODO.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
             let itemID = Utils.generateID(24);
