@@ -46,6 +46,10 @@ import Utils from "../utils/utils.js";
             e.target.value = "";
 
             allTodoItems = JSON.parse(localStorage.getItem("allItemsTODO"));
+
+            if (allTodoItems == null) {
+                allTodoItems = []
+            }
             
             allTodoItems.push(itemAgregado);
             updateTotalLeftItems(totalItemsActive, allTodoItems, descriptionContainer);
@@ -55,12 +59,14 @@ import Utils from "../utils/utils.js";
 
     clearCompletedButton.addEventListener("click", () => {
         let allItems = JSON.parse(localStorage.getItem("allItemsTODO"));
-        allTodoItems = allItems.filter(item => item.estado != 2);
-        updateTotalLeftItems(totalItemsActive, allTodoItems, descriptionContainer);
-        removeItemsAndGenerateItemsSorted(listaAll, allTodoItems, 1);
-        removeItemsAndGenerateItemsSorted(listaActivos, allTodoItems, 2);
-        removeItemsAndGenerateItemsSorted(listaCompleted, allTodoItems, 3);
-        localStorage.setItem("allItemsTODO", JSON.stringify(allTodoItems));
+        if (allItems != null) {
+            allTodoItems = allItems.filter(item => item.estado != 2);
+            updateTotalLeftItems(totalItemsActive, allTodoItems, descriptionContainer);
+            removeItemsAndGenerateItemsSorted(listaAll, allTodoItems, 1);
+            removeItemsAndGenerateItemsSorted(listaActivos, allTodoItems, 2);
+            removeItemsAndGenerateItemsSorted(listaCompleted, allTodoItems, 3);
+            localStorage.setItem("allItemsTODO", JSON.stringify(allTodoItems));
+        }
     })
     
 })(document);
