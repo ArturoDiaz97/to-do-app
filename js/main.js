@@ -5,6 +5,8 @@ import { createTemplateTODO } from "./create-template-todo.js";
 import { loadExistingItems } from "./loadItems.js";
 import { removeItemsAndGenerateItemsSorted } from "./remove-template-todo.js";
 import { loadThemeSaved } from "./load-theme-saved.js";
+import { updateTotalLeftItems } from "./total-left-items.js";
+
 import Utils from "../utils/utils.js";
 
 ((d)=>{
@@ -18,16 +20,17 @@ import Utils from "../utils/utils.js";
     const listaActivos = d.querySelector(".list-container.active");
     const listaCompleted = d.querySelector(".list-container.completed");
     const clearCompletedButton = d.querySelector(".clear-completed-button");
+    const descriptionContainer = d.querySelector(".description-container span");
+    let totalItemsActive = 0;
 
     loadThemeSaved(iconMoon, iconSun, sections);
     
     allTodoItems = loadExistingItems(listaAll, listaActivos, listaCompleted);
-
-    console.log(allTodoItems);
+    updateTotalLeftItems(totalItemsActive, allTodoItems, descriptionContainer);
 
     d.addEventListener("DOMContentLoaded", () => {
-        setListenersToItemsCheckboxes(d, listaAll, listaCompleted, listaActivos);
-    
+        setListenersToItemsCheckboxes(d, listaAll, listaCompleted, listaActivos, totalItemsActive, descriptionContainer);
+
         const tabs = d.querySelectorAll(".tab");
         const listas = d.querySelectorAll(".list-container");
         agregarFuncionalidadTabs(tabs, listas);
@@ -41,7 +44,11 @@ import Utils from "../utils/utils.js";
             let itemAgregado = createTemplateTODO(d, listaAll, e.target.value, itemID, 1);
             createTemplateTODO(d, listaActivos, e.target.value, itemID, 1);
             e.target.value = "";
+
+            allTodoItems = JSON.parse(localStorage.getItem("allItemsTODO"));
+            
             allTodoItems.push(itemAgregado);
+            updateTotalLeftItems(totalItemsActive, allTodoItems, descriptionContainer);
             localStorage.setItem("allItemsTODO", JSON.stringify(allTodoItems))
         };
     })
@@ -49,6 +56,7 @@ import Utils from "../utils/utils.js";
     clearCompletedButton.addEventListener("click", () => {
         let allItems = JSON.parse(localStorage.getItem("allItemsTODO"));
         allTodoItems = allItems.filter(item => item.estado != 2);
+        updateTotalLeftItems(totalItemsActive, allTodoItems, descriptionContainer);
         removeItemsAndGenerateItemsSorted(listaAll, allTodoItems, 1);
         removeItemsAndGenerateItemsSorted(listaActivos, allTodoItems, 2);
         removeItemsAndGenerateItemsSorted(listaCompleted, allTodoItems, 3);
