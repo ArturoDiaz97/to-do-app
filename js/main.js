@@ -53,20 +53,23 @@ import Utils from "../utils/utils.js";
 
     inputTODO.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
-            let itemID = Utils.generateID(24);
-            let itemAgregado = createTemplateTODO(d, listaAll, e.target.value, itemID, 1);
-            createTemplateTODO(d, listaActivos, e.target.value, itemID, 1);
-            e.target.value = "";
-
-            allTodoItems = JSON.parse(localStorage.getItem("allItemsTODO"));
-
-            if (allTodoItems == null) {
-                allTodoItems = []
+            let texto = e.target.value.trim();
+            if (texto != "") {
+                let itemID = Utils.generateID(24);
+                let itemAgregado = createTemplateTODO(d, listaAll, texto, itemID, 1);
+                createTemplateTODO(d, listaActivos, texto, itemID, 1);
+                e.target.value = "";
+    
+                allTodoItems = JSON.parse(localStorage.getItem("allItemsTODO"));
+    
+                if (allTodoItems == null) {
+                    allTodoItems = []
+                }
+                
+                allTodoItems.push(itemAgregado);
+                updateTotalLeftItems(totalItemsActive, allTodoItems, descriptionContainer);
+                localStorage.setItem("allItemsTODO", JSON.stringify(allTodoItems))
             }
-            
-            allTodoItems.push(itemAgregado);
-            updateTotalLeftItems(totalItemsActive, allTodoItems, descriptionContainer);
-            localStorage.setItem("allItemsTODO", JSON.stringify(allTodoItems))
         };
     })
 
