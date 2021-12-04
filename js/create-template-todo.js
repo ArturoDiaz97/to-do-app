@@ -3,7 +3,7 @@ export function createTemplateTODO(d, container, itemValor, itemID, estado){
 
     let $inputCheckboxContainer = d.createElement("div");
     $inputCheckboxContainer.classList.add("input-checkbox-container");
-    $inputCheckboxContainer.classList.add("item")
+    $inputCheckboxContainer.classList.add("item");
     
     let $checkboxContainer = d.createElement("div");
     $checkboxContainer.classList.add("checkbox-container");

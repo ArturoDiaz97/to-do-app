@@ -84,5 +84,36 @@ import Utils from "../utils/utils.js";
             localStorage.setItem("allItemsTODO", JSON.stringify(allTodoItems));
         }
     })
+
+    let allListContainer = d.querySelector(".list-container.all");
+
+    Sortable.create(allListContainer, {
+        onEnd: (event) => {
+            let item = event.item
+            console.log("se inserto un elemento");
+        },
+        group: "all-items-list",
+        animation: 150,
+        store: {
+            set: (sortable) => {
+                const orden = sortable.toArray();
+                let nuevoOrdenToDo = [];
+                for (let i = 0; i < allListContainer.children.length; i++) {
+                    let objetoToDo = {};
+                    const element = allListContainer.children[i];
+                    let id = element.lastChild.firstChild.firstChild["id"];
+                    let valor = element.lastChild.firstChild.firstChild["innerHTML"];
+                    let estado = (element.firstChild.firstChild.firstChild["checked"]) ?2 :1;
+                    objetoToDo.id = id;
+                    objetoToDo.valor = valor;
+                    objetoToDo.estado = estado;
+                    nuevoOrdenToDo.push(objetoToDo)
+                }
+                removeItemsAndGenerateItemsSorted(listaActivos, nuevoOrdenToDo, 2);
+                removeItemsAndGenerateItemsSorted(listaCompleted, nuevoOrdenToDo, 3);
+                localStorage.setItem("allItemsTODO", JSON.stringify(nuevoOrdenToDo));
+            }
+        }
+    });
     
 })(document);
